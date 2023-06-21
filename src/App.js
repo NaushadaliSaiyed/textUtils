@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import "./App.css";
-// import About from "./components/About";
+import About from "./components/About";
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
 import Alert from './components/Alert';
-// import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 
 
@@ -27,7 +27,7 @@ function App() {
       setMode("dark")
       document.body.style.background = "#042743"
       showAlert("Dark mode has been enabled", "success")
-      document.title = "TextUtils - Dark Mode"
+      // document.title = "TextUtils - Dark Mode"
       // setInterval(()=>{
       //   document.title = "TextUtils - is Amezing"
       // },2000)
@@ -39,7 +39,7 @@ function App() {
       setMode("light")
       document.body.style.background = "white"
       showAlert("Light mode has been enabled", "success")
-      document.title = "TextUtils - Light Mode"
+      // // document.title = "TextUtils - Light Mode"
     }
   }
 
@@ -74,16 +74,16 @@ function App() {
 
   return (
     <>
-      {/* <BrowserRouter> */}
+      <BrowserRouter>
         <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} toggleGrayMode={toggleGrayMode} toggleSuccessMode={toggleSuccessMode} toggleDangerMode={toggleDangerMode} toggleWarningMode={toggleWarningMode} />
           <Alert alert={alert} />
-          <TextForm heading="Enter the text to analyze below" mode={mode} showAlert={showAlert} />
+          {/* <TextForm heading="Enter the text to analyze below" mode={mode} showAlert={showAlert} /> */}
           {/* <About/> */}
-        {/* <Routes> */}
-          {/* <Route path="/" element={<TextForm heading="Enter the text to analyze below" mode={mode} showAlert={showAlert} />}/> */}
-          {/* <Route path="/about" element={<About />}/> */}
-        {/* </Routes> */}
-      {/* </BrowserRouter> */}
+        <Routes>
+          <Route path="/" element={<TextForm heading="Try TextUtils - Word Counter, Character Counter, Remove extra spaces" mode={mode} showAlert={showAlert} />}/>
+          <Route path="/about" element={<About mode={mode}/>}/>
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
